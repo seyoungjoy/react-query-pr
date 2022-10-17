@@ -1,0 +1,21 @@
+# react-query-practice
+- Sever state와 Client state를 분리 및 관리해야 하는 필요성??
+
+## useQuery
+- queryKey : 캐싱, 데이터재요청 등에 사용될 수 있는 useQuery의 식별자.
+- queryFn : 비동시통신으로 Promise를 반환하는 함수
+- 세번째 인자로 옵션도 설정 가능
+- useQuery로 비동기함수를 실행하면 data, isLoading, isSuccess, isError 등 비동기 통신에 유용한 값들을 반환한다.
+- data : 반환값
+- isLoading : 로딩중
+- isSuccess/isError : 통신 성공, 실패
+- error : 에러 내용
+
+## State(fresh, fetching, stale, inactive)
+- stale 상태 시간을 설정하여 설정한 시간만큼 refetch가 일어나지 않도록 fresh상태로 만들 수 있음.
+```jsx
+const { data : titleData, isLoading, isSuccess, isError, error} = useQuery(["titleData"], getTitleData, {
+        staleTime:5000,
+    });
+```
+## useMutation
