@@ -20,8 +20,7 @@ interface postType {
 }
 
 function Todos(){
-    const { data, isLoading, isError, error} = useQuery(["posts"], fetchPostsData);
-    const { mutate, isSuccess} = useMutation(postData);
+    const { data, isLoading, isError, error} = useQuery(["posts", ], fetchPostsData);
 
     return(
         <div>
@@ -34,9 +33,7 @@ function Todos(){
                     </div>
                 ))
             )}
-            <div>
-                <button onClick={() => mutate}>보내기</button>
-            </div>
+
         </div>
     )
 }
