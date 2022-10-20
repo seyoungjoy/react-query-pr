@@ -4,6 +4,8 @@ import { getTitleData, postData } from "./api/request";
 import {useEffect} from "react";
 import {createBrowserRouter, Link} from "react-router-dom";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import InvalidateQueries from "./components/InvalidateQueries";
+import UseMutation from "./components/UseMutation";
 
 
 function App() {
@@ -13,7 +15,9 @@ function App() {
     <div className="App">
         <QueryClientProvider client={queryClient}>
             <Nav/>
-            <Todos/>
+            <InvalidateQueries/>
+            {/*<UseMutation/>*/}
+            {/*<Todos/>*/}
             <ReactQueryDevtools initialIsOpen/>
         </QueryClientProvider>
     </div>
@@ -36,6 +40,8 @@ interface postType {
 }
 
 function Todos(){
+    const queryClient = useQueryClient();
+
 
     const { data : titleData, isLoading, isSuccess, isError, error} = useQuery(["titleData"], getTitleData, {
         staleTime:5000,

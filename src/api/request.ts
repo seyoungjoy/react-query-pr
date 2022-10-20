@@ -1,8 +1,10 @@
 import axios from "axios";
 
 interface paramType {
-    title:string;
+    userId:number;
     id:number;
+    title:string;
+    body:string;
 }
 
 // get
